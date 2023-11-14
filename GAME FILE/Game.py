@@ -1,7 +1,9 @@
 import pygame
 
+#initialize the code
 pygame.init()
 
+#all variables used 
 WIDTH,HEIGHT = 800,600
 FPS = 60
 
@@ -14,15 +16,18 @@ jump = False
 jump_count = 10
 facing_left = False
 
+#screen displaying and caption
 screen = pygame.display.set_mode((WIDTH,HEIGHT))
 pygame.display.set_caption('GAME')
 
+#all images and variants
 player_img = pygame.image.load('assets/knight.png')
 player_img = pygame.transform.scale(player_img, (player_width, player_height))
 player_img_flipped = pygame.transform.flip(player_img, True, False)
 
 clock = pygame.time.Clock()
 
+#main loop
 run = True
 while run:
     screen.fill((255,255,255))
@@ -33,6 +38,7 @@ while run:
 
     keys = pygame.key.get_pressed()
 
+    #all keyboard input
     if keys[pygame.K_LEFT] and player_x > 0:
         player_x -= player_speed
         facing_left = True
@@ -52,7 +58,8 @@ while run:
         else:
             jump = False
             jump_count = 10
-    
+
+    #character direction code
     if facing_left:
         screen.blit(player_img_flipped, (player_x, player_y))
     else:
